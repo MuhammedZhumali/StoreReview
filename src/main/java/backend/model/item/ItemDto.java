@@ -1,17 +1,17 @@
 package backend.model.item;
 
 import lombok.*;
-import backend.model.store.Store;
+import backend.model.store.StoreDto;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Item {
+public class ItemDto {
     private String id;
     private String name;
     private String description;
-    private Store store;
+    private StoreDto store;
     private String category;
     private double price;
 }

@@ -1,16 +1,16 @@
-package backend.model.user;
+package backend.entity;
 
-import lombok.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "users")
+@Entity
 public class User {
-    private String id;
-    private String name;
-    private String height;
-    private String weight;
+    @Id
+    private Long id;
+
+    private String username;
+    private String email;
 
 }
