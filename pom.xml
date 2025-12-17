@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>org.example</groupId>
-    <artifactId>HeatStroke</artifactId>
+    <artifactId>outfitReviewer</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -142,13 +142,13 @@
                 <version>3.9.0</version>
                 <configuration>
                     <changeLogFile>src/main/resources/db/db.changelog-master.xml</changeLogFile>
-                    <url>jdbc:postgresql://localhost:5433/heatstr</url>
-                    <username>heatstr</username>
-                    <password>heatstr</password>
-                    <defaultSchemaName>heatstr</defaultSchemaName>
+                    <url>jdbc:postgresql://localhost:5432/outfit</url>
+                    <username>outfit</username>
+                    <password>outfit</password>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
 </project>
+
