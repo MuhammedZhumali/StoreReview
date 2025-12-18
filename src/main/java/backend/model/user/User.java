@@ -2,12 +2,17 @@ package backend.model.user;
 
 import javax.persistence.*;
 
-import lombok.NonNull;
+import lombok.*;
 
 @Table(name = "users")
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NonNull
     private String username;

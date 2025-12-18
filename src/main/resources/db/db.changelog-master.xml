@@ -5,7 +5,37 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
-    <!-- Add your changesets here -->
+    <!-- Fix users table ID column to support auto-increment -->
+    <changeSet id="fix-users-table-id" author="system">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="users"/>
+        </preConditions>
+        
+        <!-- Create sequence if it doesn't exist -->
+        <sql>
+            CREATE SEQUENCE IF NOT EXISTS users_id_seq START WITH 1 INCREMENT BY 1 NO MINVALUE NO MAXVALUE CACHE 1;
+        </sql>
+        
+        <!-- Ensure id column is BIGINT type (if it's not already) -->
+        <sql>
+            ALTER TABLE users ALTER COLUMN id TYPE BIGINT;
+        </sql>
+        
+        <!-- Set the default value for id column using the sequence -->
+        <sql>
+            ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_id_seq');
+        </sql>
+        
+        <!-- Update the sequence to start from the max existing id + 1 if there are existing records -->
+        <sql>
+            SELECT setval('users_id_seq', COALESCE((SELECT MAX(id) FROM users), 0) + 1, false);
+        </sql>
+        
+        <!-- Ensure id column is NOT NULL (should already be, but making sure) -->
+        <sql>
+            ALTER TABLE users ALTER COLUMN id SET NOT NULL;
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>
 
