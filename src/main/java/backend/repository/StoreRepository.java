@@ -7,5 +7,7 @@ import java.util.*;
 
 @Repository
 public interface StoreRepository extends JpaRepository<Store, String> {
-    List<Store> findAll();
+    
+    Store findStoreByName(String name);
+
 }

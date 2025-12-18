@@ -14,7 +14,11 @@ public class StoreService {
         this.storeRepo = storeRepo;
     }
 
-    public List<Store> getAllStores() {
-        return storeRepo.findAll();
+    public Store getStoreByName(String name) {
+        return storeRepo.findStoreByName(name);
+    }
+
+    public Store createStore(Store store){
+        return storeRepo.save(store);
     }
 }

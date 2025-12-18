@@ -7,4 +7,5 @@ public class StoreDto {
     private String id;
     private String name;
     private String location;    
+    private String imageUrl;
 }

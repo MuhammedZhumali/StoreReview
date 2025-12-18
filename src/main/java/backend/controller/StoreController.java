@@ -20,8 +20,14 @@ public class StoreController {
         return "StoreController is up and running!";
     }
 
-    @GetMapping("/all")
-    public List<Store> getAllStores(){
-        return service.getAllStores();
+    @GetMapping("/find/{name}")
+    public Store getStoreByName(@PathVariable String name){
+        return service.getStoreByName(name);
     }
+
+    @PostMapping("/create")
+    public Store createStore(@RequestBody Store store){
+        return service.createStore(store);
+    }
+
 }
