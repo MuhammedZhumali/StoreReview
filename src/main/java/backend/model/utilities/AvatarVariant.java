@@ -1,6 +1,5 @@
-package src.main.java.backend.model.utilities;
+package backend.model.utilities;
 
-import src.main.java.backend.model.utilities.*;
 
 import lombok.*;
 

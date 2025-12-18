@@ -14,8 +14,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .antMatchers("/user/health", "/actuator/**").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             )
             .csrf().disable();
         

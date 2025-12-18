@@ -1,6 +1,5 @@
-package src.main.java.backend.model.utilities;
+package backend.model.utilities;
 
-import src.main.java.backend.model.utilities.*;
 
 import lombok.*;
 import java.util.List;
@@ -16,7 +15,7 @@ public class AvatarGroup {
 
     private Integer height;
     private Integer weight;
-    private Gender gender;
+    private char gender;
 
     private AvatarStatus status;
 

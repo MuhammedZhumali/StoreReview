@@ -1,4 +1,4 @@
-package src.main.java.backend.model.utilities;
+package backend.model.utilities;
 
 public enum AvatarStatus {
     CREATED,
