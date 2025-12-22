@@ -18,7 +18,15 @@ public class StoreService {
         return storeRepo.findStoreByName(name);
     }
 
+    public List<Store> getAllStores(){
+        return storeRepo.findAll();
+    }
+
     public Store createStore(Store store){
         return storeRepo.save(store);
+    }
+
+    public void deleteStore(Long id){
+        storeRepo.deleteById(id);
     }
 }

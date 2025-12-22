@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 @Repository
-public interface StoreRepository extends JpaRepository<Store, String> {
+public interface StoreRepository extends JpaRepository<Store, Long> {
     
     Store findStoreByName(String name);
 

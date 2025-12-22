@@ -2,14 +2,18 @@ package backend.model.item;
 
 import javax.persistence.*;
 import backend.model.store.Store;
-import lombok.NonNull;
-
+import lombok.*;
 
 @Entity
 @Table(name = "items")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @NonNull
     private String name;
     @NonNull

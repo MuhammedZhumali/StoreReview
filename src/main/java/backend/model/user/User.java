@@ -17,5 +17,5 @@ public class User {
     @NonNull
     private String username;
     private String email;
-
+    private String password;
 }

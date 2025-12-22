@@ -8,10 +8,14 @@ import backend.model.store.StoreDto;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemDto {
-    private String id;
+    private Long id;
     private String name;
     private String description;
     private StoreDto store;
     private String category;
     private double price;
+    private int stockQuantity;
+    private boolean isActive;
+    private int rating;
+    private String imageUrl;
 }

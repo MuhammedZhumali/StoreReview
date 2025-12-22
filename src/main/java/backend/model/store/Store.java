@@ -9,7 +9,7 @@ import lombok.NonNull;
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     @NonNull
     private String name;
     private String location;

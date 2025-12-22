@@ -30,4 +30,13 @@ public class StoreController {
         return service.createStore(store);
     }
 
+    @GetMapping("/all")
+    public List<Store> getAllStores(){
+        return service.getAllStores();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteStore(@PathVariable Long id){
+        service.deleteStore(id);
+    }
 }
