@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 
 import backend.repository.ItemRepository;
 import backend.model.item.Item;
+import backend.model.item.ItemDto;
+
 import java.util.*;
 
 @Service
@@ -14,54 +16,54 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
-    public List<Item> getAll(){
+    public List<ItemDto> getAll(){
         return itemRepository.findAll();
     }
 
-    public Item createItem(Item item){
-        return itemRepository.save(item);
+    public ItemDto createItem(ItemDto itemDto){
+        return itemRepository.save(itemDto);
     }
 
     public void deleteItem(Long id){
         itemRepository.deleteById(id);
     }
 
-    public List<Item> getItemsByCategory(String category){
+    public List<ItemDto> getItemsByCategory(String category){
         return itemRepository.findByCategory(category);
     }
 
-    public Optional<Item> getItemById(Long id) {
+    public Optional<ItemDto> getItemById(Long id) {
         return itemRepository.findById(id);
     }
 
-    public List<Item> getItemsByStoreId(Long storeId) {
+    public List<ItemDto> getItemsByStoreId(Long storeId) {
         return itemRepository.findByStoreId(storeId);
     }
 
-    public Item updateItem(Long id, Item item){
-        Item existingItem = itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Item with id " + id + " not found"));
-        if(item.getName()!=null){
-            existingItem.setName(item.getName());
+    public ItemDto updateItem(Long id, ItemDto itemDto){
+        ItemDto existingItem = itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Item with id " + id + " not found"));
+        if(itemDto.getName()!=null){
+            existingItem.setName(itemDto.getName());
         }
-        if(item.getCategory()!=null){
-            existingItem.setCategory(item.getCategory());
+        if(itemDto.getCategory()!=null){
+            existingItem.setCategory(itemDto.getCategory());
         }
-        if(item.getPrice() > 0){
-            existingItem.setPrice(item.getPrice());
+        if(itemDto.getPrice() > 0){
+            existingItem.setPrice(itemDto.getPrice());
         }
-        if (item.getStore() != null) {
-            existingItem.setStore(item.getStore());
+        if (itemDto.getStore() != null) {
+            existingItem.setStore(itemDto.getStore());
         }
-        existingItem.setStockQuantity(item.getStockQuantity());
-        existingItem.setRating(item.getRating());
-        if (item.getImageUrl() != null) {
-            existingItem.setImageUrl(item.getImageUrl());
+        existingItem.setStockQuantity(itemDto.getStockQuantity());
+        existingItem.setRating(itemDto.getRating());
+        if (itemDto.getImageUrl() != null) {
+            existingItem.setImageUrl(itemDto.getImageUrl());
         }
 
         return itemRepository.save(existingItem);
     }
 
-    public List<Item> getItemsByPriceRange(double minPrice, double maxPrice) {
+    public List<ItemDto> getItemsByPriceRange(double minPrice, double maxPrice) {
         return itemRepository.findByPriceBetween(minPrice, maxPrice);
     }
 
