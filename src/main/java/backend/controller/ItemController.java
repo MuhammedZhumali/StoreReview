@@ -4,6 +4,9 @@ import org.springframework.web.bind.annotation.*;
 
 import backend.service.*;
 import java.util.*;
+
+import backend.config.Role;
+import backend.config.SecuredResources;
 import backend.model.item.ItemDto;
 
 @RestController
@@ -33,6 +36,7 @@ public class ItemController {
     }
 
     @PostMapping("/create")
+    //@SecuredResources(roles = {Role.SELLER})
     public ItemDto createItem(@RequestBody ItemDto itemDto){
         itemService.createItem(itemDto);
         return itemDto;
