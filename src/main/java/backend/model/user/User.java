@@ -2,6 +2,7 @@ package backend.model.user;
 
 import javax.persistence.*;
 
+import backend.config.Role;
 import lombok.*;
 
 @Table(name = "users")
@@ -18,4 +19,7 @@ public class User {
     private String username;
     private String email;
     private String password;
+    
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.CLIENT; // Default role
 }
