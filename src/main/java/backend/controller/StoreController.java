@@ -2,8 +2,11 @@ package backend.controller;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
+
+import backend.config.SecuredResources;
 import backend.model.store.Store;
 import backend.service.StoreService;
+import static backend.config.Role.*;
 
 @RestController
 @RequestMapping("/store")
@@ -26,6 +29,7 @@ public class StoreController {
     }
 
     @PostMapping("/create")
+    @SecuredResources(roles = {SELLER, ADMIN})
     public Store createStore(@RequestBody Store store){
         return service.createStore(store);
     }
@@ -36,6 +40,7 @@ public class StoreController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @SecuredResources(roles = {SELLER, ADMIN})
     public void deleteStore(@PathVariable Long id){
         service.deleteStore(id);
     }

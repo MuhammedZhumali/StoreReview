@@ -3,6 +3,9 @@ package backend.controller;
 import org.springframework.web.bind.annotation.*;
 
 import backend.service.*;
+
+import static backend.config.Role.SELLER;
+
 import java.util.*;
 
 import backend.config.Role;
@@ -31,12 +34,13 @@ public class ItemController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @SecuredResources(roles = {SELLER})
     public void deleteItem(@PathVariable Long id){
         itemService.deleteItem(id);
     }
 
     @PostMapping("/create")
-    //@SecuredResources(roles = {Role.SELLER})
+    @SecuredResources(roles = {Role.SELLER})
     public ItemDto createItem(@RequestBody ItemDto itemDto){
         itemService.createItem(itemDto);
         return itemDto;
